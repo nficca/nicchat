@@ -1,0 +1,15 @@
+{
+  "name": "nicchat",
+  "version": "0.0.1",
+  "description": "a simple chat interface i made",
+  "dependencies": {
+    "express": "~4.10.8"
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "nficca",
+  "license": "BSD-2-Clause"
+}
