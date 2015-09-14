@@ -7,7 +7,7 @@ var io = require('socket.io')(server);
 app.use(express.static(__dirname+'/public'));
 
 app.get('/nicchat', function(req, res) {
-    res.sendFile(__dirname+'/chat.html');
+    res.sendFile(__dirname+'/public/pages/chat/chat.html');
 });
 
 io.on('connection', function(socket) {
@@ -18,7 +18,7 @@ io.on('connection', function(socket) {
     });
 
     socket.on('message', function(msg) {
-        io.emit('message', '[USER]: '+msg);
+        io.emit('message', msg);
     })
 });
 
