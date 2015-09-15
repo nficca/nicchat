@@ -1,4 +1,5 @@
 var express = require('express');
+var moment = require('moment');
 var app = express();
 var http = require('http');
 var server = http.createServer(app);
@@ -18,7 +19,11 @@ io.on('connection', function(socket) {
     });
 
     socket.on('message', function(msg) {
-        io.emit('message', msg);
+        var msgData = {
+            text:msg,
+            timestamp:moment().format('h:mm a')
+        };
+        io.emit('message', msgData);
     })
 });
 

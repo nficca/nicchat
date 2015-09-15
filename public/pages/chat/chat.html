@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-custom.css">
     <link rel="stylesheet" href="/pages/chat/chat.css">
     <title>nicchat</title>
 </head>
 <body>
     <div class="col-xs-12">
-        <div class="col-xs-12 col-md-8">
+        <div class="row col-xs-12 col-md-8 window">
             <div class="col-xs-12 message-center">
                 <ul id="messages">
                 </ul>
             </div>
-            <form class="col-xs-12 form-horizontal">
-                <div class="form-group">
-                    <input id="m" autocomplete="off" class="form-control"/><button type="submit">Send</button>
+            <form class="form-horizontal">
+                <div class="col-xs-10 form-group">
+                    <input id="m" autocomplete="off" class="form-control"/>
+                </div>
+                <div class="col-xs-2">
+                    <button class="btn btn-default" type="submit">Send</button>
                 </div>
             </form>
         </div>

@@ -1,7 +1,8 @@
 .message-center {
-    padding:10px 0 10px 0;
-    margin: 20px 0 20px 0;
-    border: 1px solid #eeeeee;
+    background-color: #FFFFFF;
+    padding:10px 0;
+    margin: 20px 0;
+    border: 1px solid #c69ebe;
     border-radius: 4px;
     min-height:200px;
     max-height: 400px;
@@ -10,4 +11,27 @@
 
 .message-center ul {
     list-style: none;
+    padding-left:10px;
+    padding-right:20px;
+}
+
+.message-box {
+    display:inline-block;
+    padding: 4px 10px;
+    background-color: #a041ae;
+    color:#FFFFFF;
+    border-radius: 8px;
+    margin-top:4px;
+}
+
+.message-timestamp {
+    font-size:9px;
+    font-weight:bold;
+    color:#CC94C1;
+}
+
+.window {
+    background-color: #dddddd;
+    border: 2px solid #9e7b96;
+    border-radius: 4px;
 }
