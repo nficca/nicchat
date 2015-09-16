@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-custom.css">
-    <link rel="stylesheet" href="/pages/chat/chat.css">
-    <title>nicchat</title>
-</head>
-<body>
+{% extends '../templates/default.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="/css/chat/chat.css">
+{% endblock %}
+
+{% block content %}
     <div class="col-xs-12">
         <div class="row col-xs-12 col-md-8 window">
             <div class="col-xs-12 message-center">
@@ -24,9 +21,9 @@
             </form>
         </div>
     </div>
+{% endblock %}
+
+{% block js %}
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/pages/chat/chat.js"></script>
-</body>
-</html>
+    <script type="text/javascript" src="/js/chat/chat.js"></script>
+{% endblock %}

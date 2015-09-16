@@ -13,9 +13,11 @@ var chatPage = {
 
     handleSendMessage : function() {
         $('form').submit(function() {
-            var message = $('#m');
-            chatPage.socket.emit('message', message.val());
-            message.val('');
+            var messageInput = $('#m');
+            var message = $('<div>').text(messageInput.val()).html();
+            if (chatPage.validateMessage(message))
+                chatPage.socket.emit('message', message);
+            messageInput.val('');
             return false;
         });
     },
@@ -25,6 +27,10 @@ var chatPage = {
             chatPage.messages.append($('<li>').append(chatPage.createMessageBox(msgData)));
             chatPage.messageCenter.scrollTop(chatPage.messageCenter.prop('scrollHeight'));
         });
+    },
+
+    validateMessage : function(msg) {
+        return msg !== '';
     },
 
     createMessageBox : function(msgData) {
