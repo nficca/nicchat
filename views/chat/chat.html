@@ -2,28 +2,57 @@
 
 {% block css %}
     <link rel="stylesheet" href="/css/chat/chat.css">
+    <link rel="stylesheet" href="/css/colorselector/bootstrap-colorselector.css">
 {% endblock %}
 
 {% block content %}
-    <div class="col-xs-12">
-        <div class="row col-xs-12 col-md-8 window">
-            <div class="col-xs-12 message-center">
-                <ul id="messages">
-                </ul>
+    <div class="col-xs-12 container-fluid window">
+        <div class="row">
+            <div class="col-xs-12 col-sm-2">
+                <p class="text-l">nic<b>chat</b></p>
             </div>
-            <form class="form-horizontal">
-                <div class="col-xs-10 form-group">
-                    <input id="m" autocomplete="off" class="form-control"/>
+            <div class="col-xs-12 col-sm-6">
+                <div class="input-group">
+                    <input id="nickname"  placeholder="Enter a nickname" class="form-control"/>
+                    <span class="input-group-addon">
+                        <select id="colorselector">
+                            <option value="1" data-color="#A466B0" selected="selected">purple</option>
+                            <option value="2" data-color="#F27826">orange</option>
+                            <option value="3" data-color="#25C622">green</option>
+                            <option value="4" data-color="#3852D6">blue</option>
+                            <option value="5" data-color="#F0C400">yellow</option>
+                            <option value="6" data-color="#FF2D59">pink</option>
+                            <option value="7" data-color="#F23C2E">red</option>
+                            <option value="8" data-color="#AE5A3B">brown</option>
+                            <option value="9" data-color="#3AD1D1">cyan</option>
+                            <option value="10" data-color="#A8D13A">lime</option>
+                        </select>
+                    </span>
                 </div>
-                <div class="col-xs-2">
-                    <button class="btn btn-default" type="submit">Send</button>
-                </div>
-            </form>
+            </div>
+            <div class="col-xs-12 col-sm-1">
+                <button id="setUserInfoBtn" class="btn btn-default">Set</button>
+            </div>
+
         </div>
+        <form class="form-horizontal">
+            <div class="col-xs-12 container-fluid message-center">
+                <div id="messages" class="row">
+                </div>
+            </div>
+            <div class="col-xs-10 form-group">
+                <input id="m" autocomplete="off" class="form-control"/>
+            </div>
+            <div class="col-xs-2">
+                <button class="btn btn-default" type="submit">Send</button>
+            </div>
+        </form>
     </div>
 {% endblock %}
 
 {% block js %}
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/js/colorselector/bootstrap-colorselector.js"></script>
+    <script type="text/javascript" src="/js/shade-blend-convert.js"></script>
     <script type="text/javascript" src="/js/chat/chat.js"></script>
 {% endblock %}

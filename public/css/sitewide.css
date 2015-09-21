@@ -1,3 +1,13 @@
+@font-face {
+    font-family: MyriadProCond;
+    src: url("/fonts/MyriadPro-Cond.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Slabo;
+    src: url("/fonts/Slabo27px-Regular.ttf") format("truetype");
+}
+
 .text-xxl {
     line-height: 1;
     font-size:96px;
@@ -13,7 +23,12 @@
     font-size:24px;
 }
 
-.text-m {
+.text-md {
     line-height: 1;
     font-size:16px;
+}
+
+.text-sm {
+    line-height: 1;
+    font-size:12px;
 }

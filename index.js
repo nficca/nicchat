@@ -41,11 +41,8 @@ io.on('connection', function(socket) {
         console.log('user disconnected');
     });
 
-    socket.on('message', function(msg) {
-        var msgData = {
-            text:msg,
-            timestamp:moment().format('h:mm a')
-        };
+    socket.on('message', function(msgData) {
+        msgData.timestamp = moment().format('h:mm a');
         io.emit('message', msgData);
     })
 });
