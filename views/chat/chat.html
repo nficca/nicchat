@@ -1,5 +1,9 @@
 {% extends '../templates/default.html' %}
 
+{% block %}
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+{% endblock %}
+
 {% block css %}
     <link rel="stylesheet" href="/css/chat/chat.css">
     <link rel="stylesheet" href="/css/colorselector/bootstrap-colorselector.css">
@@ -26,22 +30,21 @@
                             <option value="1" data-color="#A466B0" selected="selected">purple</option>
                             <option value="6" data-color="#FF62FF">pink</option>
                             <option value="8" data-color="#AE5A3B">brown</option>
-
                         </select>
                     </span>
                 </div>
             </div>
 
         </div>
-        <form class="form-horizontal">
-            <div class="col-xs-12 container-fluid message-center">
+        <form class="container-fluid">
+            <div class="container-fluid message-center">
                 <div id="messages" class="row">
                 </div>
             </div>
-            <div class="col-xs-10 form-group">
-                <input id="m" autocomplete="off" class="form-control"/>
+            <div class="col-xs-12 col-sm-10 form-group">
+                <input id="m" autocomplete="off" class="form-control" placeholder="Say hey!"/>
             </div>
-            <div class="col-xs-2">
+            <div class="hidden-xs col-sm-2">
                 <button class="btn btn-default" type="submit">Send</button>
             </div>
         </form>
