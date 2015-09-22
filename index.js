@@ -43,7 +43,7 @@ io.on('connection', function(socket) {
 
     socket.on('message', function(msgData) {
         msgData.timestamp = moment().format('h:mm a');
-        io.emit('message', msgData);
+        if(/^[a-zA-Z0-9][a-zA-Z0-9_]{2,16}$/.test(msgData.sender) && msgData.text !== '') io.emit('message', msgData);
     })
 });
 

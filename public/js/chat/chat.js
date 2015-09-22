@@ -9,7 +9,7 @@ var chatPage = {
 
         this.userInfo = {
             nickname: 'anonymous',
-            color: 'purple'
+            color: '#A466B0'
         };
 
         this.setupUser();
@@ -20,16 +20,30 @@ var chatPage = {
     setupUser : function() {
         var _this = this;
         var colorSelector = $('#colorselector');
+        var nicknameInput = $('#nickname');
+
+        $(nicknameInput).val('anonymous');
 
         _this.initializeColorSelect(colorSelector);
 
-        $('#setUserInfoBtn').on('click', function() {
+        function changeUserInfo() {
             var selectedColor = $(colorSelector).find(':selected').data('color');
-            var nickname = $('<div>').text($('#nickname').val()).html();
+            var nickname = $('<div>').text($(nicknameInput).val()).html();
 
-            if (_this.validateText(nickname)) {
-                _this.updateUserInfo({nickname:nickname, color:selectedColor});
-            }
+            var changedInfo = {
+                nickname: _this.validateName(nickname) ? nickname : _this.userInfo.nickname,
+                color:selectedColor
+            };
+
+            _this.updateUserInfo(changedInfo);
+        }
+
+        $(colorSelector).on('change', function() {
+            changeUserInfo();
+        });
+
+        $(nicknameInput).on('keyup', function() {
+            changeUserInfo();
         });
     },
 
@@ -47,9 +61,10 @@ var chatPage = {
         $('form').submit(function() {
             var messageInput = $('#m');
             var message = $('<div>').text(messageInput.val()).html();
-            if (chatPage.validateText(message))
+            if (chatPage.validateMsg(message)) {
                 var msgData = _this.createMsg(message);
                 chatPage.socket.emit('message', msgData);
+            }
             messageInput.val('');
             return false;
         });
@@ -62,8 +77,12 @@ var chatPage = {
         });
     },
 
-    validateText : function(msg) {
+    validateMsg : function(msg) {
         return msg !== '';
+    },
+
+    validateName : function(name) {
+        return /^[a-zA-Z0-9][a-zA-Z0-9_]{2,16}$/.test(name)
     },
 
     createMsg : function(msg) {
@@ -79,7 +98,7 @@ var chatPage = {
         var messageBox = document.createElement('div');
         messageBox.className = 'message-box col-xs-12';
         $(messageBox).css('color', msgData.color);
-        $(messageBox).css('background-color', shadeBlendConvert(0.9, msgData.color));
+        $(messageBox).css('background-color', shadeBlendConvert(0.8, msgData.color));
 
         var messageText = document.createElement('div');
         messageText.className = 'message-text col-xs-11';

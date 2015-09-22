@@ -10,11 +10,12 @@
 /* colorselector dropdown */
 .dropdown-colorselector>.dropdown-menu {
   top: 80%;
-  left: -7px;
+  left: -100px;
   padding: 4px;
   min-width: 130px;
   max-width: 130px;
 }
+
 
 /*
 .dropdown-colorselector>.dropdown-menu.pull-right {
@@ -70,7 +71,7 @@
   border-right: 7px solid transparent;
   content: "";
   display: inline-block;
-  left: 9px;
+  left: 102px;
   position: absolute;
   top: -7px;
 }
@@ -81,7 +82,7 @@
   border-right: 6px solid transparent;
   content: "";
   display: inline-block;
-  left: 10px;
+  left: 103px;
   position: absolute;
   top: -6px;
 }
