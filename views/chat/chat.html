@@ -12,36 +12,37 @@
 {% block content %}
     <div class="container-fluid window">
         <div class="row">
-            <div class="col-sm-2 col-xs-12">
-                <p class="text-l">nic<b>chat</b></p>
-            </div>
-            <div class="col-sm-6 col-xs-12">
-                <div class="input-group">
-                    <input id="nickname"  placeholder="Enter a nickname" class="form-control"/>
-                    <span class="input-group-addon">
-                        <select id="colorselector">
-                            <option value="10" data-color="#2B2B2B">black</option>
-                            <option value="7" data-color="#F23C2E">red</option>
-                            <option value="2" data-color="#F27826">orange</option>
-                            <option value="5" data-color="#E0B400">yellow</option>
-                            <option value="3" data-color="#25C622">green</option>
-                            <option value="9" data-color="#3AD1D1">cyan</option>
-                            <option value="4" data-color="#3852D6">blue</option>
-                            <option value="1" data-color="#A466B0" selected="selected">purple</option>
-                            <option value="6" data-color="#FF62FF">pink</option>
-                            <option value="8" data-color="#AE5A3B">brown</option>
-                        </select>
-                    </span>
+            <div class="col-xs-12">
+                <div class="col-sm-2 col-xs-12">
+                    <p class="text-xl" style="font-family: MyriadProCond, sans-serif; margin-bottom: 0">nic<b>chat</b></p>
+                </div>
+                <div class="col-sm-6 col-xs-12 pull-right">
+                    <div class="input-group">
+                        <input id="nickname"  placeholder="Enter a nickname" class="form-control"/>
+                        <span class="input-group-addon">
+                            <select id="colorselector">
+                                <option value="10" data-color="#2B2B2B">black</option>
+                                <option value="7" data-color="#F23C2E">red</option>
+                                <option value="2" data-color="#F27826">orange</option>
+                                <option value="5" data-color="#E0B400">yellow</option>
+                                <option value="3" data-color="#25C622">green</option>
+                                <option value="9" data-color="#3AD1D1">cyan</option>
+                                <option value="4" data-color="#3852D6">blue</option>
+                                <option value="1" data-color="#A466B0" selected="selected">purple</option>
+                                <option value="6" data-color="#FF62FF">pink</option>
+                                <option value="8" data-color="#AE5A3B">brown</option>
+                            </select>
+                        </span>
+                    </div>
                 </div>
             </div>
-
         </div>
         <form class="container-fluid">
             <div class="container-fluid message-center">
                 <div id="messages" class="row">
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-10 form-group">
+            <div class="col-xs-12 col-sm-10 form-group no-pad">
                 <input id="m" autocomplete="off" class="form-control" placeholder="Say hey!"/>
             </div>
             <div class="hidden-xs col-sm-2">

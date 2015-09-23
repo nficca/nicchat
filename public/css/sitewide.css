@@ -32,3 +32,7 @@
     line-height: 1;
     font-size:12px;
 }
+
+.no-pad {
+    padding:0;
+}

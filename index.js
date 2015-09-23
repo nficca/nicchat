@@ -36,14 +36,16 @@ app.get('*', function(req,res) {
 // Socket.io handling for nicchat
 io.on('connection', function(socket) {
     console.log('user connected');
+    io.emit('message', {sender:'console', type:'server', text:'user connected'});
 
     socket.on('disconnect', function() {
         console.log('user disconnected');
+        io.emit('message', {sender:'console', type:'server', text:'user disconnected'});
     });
 
     socket.on('message', function(msgData) {
         msgData.timestamp = moment().format('h:mm a');
-        if(/^[a-zA-Z0-9][a-zA-Z0-9_]{2,16}$/.test(msgData.sender) && msgData.text !== '') io.emit('message', msgData);
+        if(/^[a-zA-Z0-9][a-zA-Z0-9_]{2,16}$/.test(msgData.sender) && msgData.text !== '' && ['client', 'server'].indexOf(msgData.type) > -1) io.emit('message', msgData);
     })
 });
 
