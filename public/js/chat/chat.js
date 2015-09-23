@@ -49,9 +49,28 @@ var chatPage = {
         });
     },
 
+    printName : function(userInfo) {
+        return '<span style="font-weight: bold;color:'+userInfo.color+'">'+userInfo.nickname+'</span>';
+    },
+
     updateUserInfo : function(userInfo) {
-        if (userInfo.hasOwnProperty('nickname')) this.userInfo.nickname = userInfo.nickname;
-        if (userInfo.hasOwnProperty('color')) this.userInfo.color = userInfo.color;
+        var change = false;
+        var original = {nickname:this.userInfo.nickname, color:this.userInfo.color};
+
+        if (userInfo.hasOwnProperty('nickname')) {
+            change = true;
+            this.userInfo.nickname = userInfo.nickname;
+        }
+        if (userInfo.hasOwnProperty('color')) {
+            change = true;
+            this.userInfo.color = userInfo.color;
+        }
+
+        if (change && !(original.nickname == userInfo.nickname && original.color == userInfo.color)) {
+            var msgData = {type: 'server', sender:'console'};
+            msgData.text = chatPage.printName(original)+' is now '+chatPage.printName(userInfo)+'.';
+            chatPage.socket.emit('message', msgData);
+        }
     },
 
     initializeColorSelect : function(selector) {
@@ -149,6 +168,8 @@ var chatPage = {
                 'commands:<br>' +
                 '/nick [newnick] (Changes nickname)<br>' +
                 '/color [color] (Changes color)<br>' +
+                '/roll (Rolls a number between 1 and 100)<br>' +
+                '/nicchat (Displays credits)<br>' +
                 '/help (Displays this)';
                 break;
 
@@ -192,6 +213,17 @@ var chatPage = {
                 } else {
                     msgData.text = 'Invalid color. Type /color to see a list of possible colors.';
                 }
+                break;
+
+            // /roll
+            case 'roll':
+                msgData.text = chatPage.printName(chatPage.userInfo)+' rolled <b>'+Random(1,100)+'</b>!';
+                break;
+            // /nicchat
+            case 'nicchat':
+                msgData.text = 'nicchat is an application built by Nic Ficca with nodejs and expressjs.<br>' +
+                    'This project is <a href="http://github.com/nficca/nicchat" target="_blank">open-source.</a><br>' +
+                    'You can contact me via <a href="mailto:nicficca@gmail.com">nicficca@gmail.com</a>';
                 break;
 
             // default
