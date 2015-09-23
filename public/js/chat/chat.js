@@ -44,7 +44,7 @@ var chatPage = {
             changeUserInfo();
         });
 
-        $(nicknameInput).on('keyup', function() {
+        $(nicknameInput).on('focusout', function() {
             changeUserInfo();
         });
     },
@@ -159,6 +159,7 @@ var chatPage = {
 
     processCommand : function(msg) {
         var command = msg.substring(1, msg.length).split(' ');
+        var emit = false;
         var msgData = {sender:'console', type:'server'};
 
         switch(command[0]) {
@@ -217,6 +218,7 @@ var chatPage = {
 
             // /roll
             case 'roll':
+                emit = true;
                 msgData.text = chatPage.printName(chatPage.userInfo)+' rolled <b>'+Random(1,100)+'</b>!';
                 break;
             // /nicchat
@@ -230,7 +232,11 @@ var chatPage = {
             default: msgData.text = 'Type /help for a list of commands'; break;
         }
 
-        chatPage.printMsg(msgData);
+        if (emit) {
+            chatPage.socket.emit('message',msgData);
+        } else {
+            chatPage.printMsg(msgData);
+        }
     },
 
     setupColors : function() {
