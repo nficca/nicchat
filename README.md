@@ -1,4 +1,10 @@
 # nicchat
-A simple chat interface using node.js
+A very basic chat application written in nodejs.
 
-[nicficca.com/nicchat](http://nicficca.com/nicchat)
+## How to run it
+```bash
+git clone https://github.com/nficca/nicchat.git && cd nicchat
+npm install
+node index.js
+```
+Now open your browser to `http://localhost:9000` and there you have it.
